@@ -11,6 +11,12 @@ const responseFacebook = async (response) => {
   }
 }
 
+const callInfoAPI = async () => {
+  let result = await axios.get('http://localhost:8080/api/info')
+  console.log(result.data)
+}
+
+
 function App() {
   return (
     <div >

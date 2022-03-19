@@ -23,6 +23,11 @@ app.post('/api/login', bodyParser.json(), async (req, res) => {
     res.send({ok: 1})
 })
 
+app.get('/api/info', authenticated,(req, res) => {
+  res.send({ok: 1, username: req.username})
+})
+
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`)
 })
