@@ -25,6 +25,7 @@ function App() {
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}/>
+        <button onClick={callInfoAPI}>TO-info</button>
     </div>
   );
 }
