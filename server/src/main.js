@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
+const mongoose = require('mongoose');
 const app = express()
 const port = 8080
 
