@@ -21,9 +21,12 @@ const authenticated = (req, res, next) => {
   })
 }
 
-mongoose.connect('mongodb://localhost:8080/',
+mongoose.connect('mongodb://localhost:login/',
   ()=> console.log('completed connect to DB')
 )
+let User = mongoose.model('User', { fields: String });
+let adduser = new User({fields: 'test'});
+//adduser.save().then(()=>console.log('add'));
 
 app.use(cors())
 
@@ -39,6 +42,7 @@ app.post('/api/login',bodyParser.json(),async (req,res) => {
           access_token: token
       }
   })
+  
   if(!result.data.id){
       res.sendStatus(403)
       return
@@ -47,6 +51,7 @@ app.post('/api/login',bodyParser.json(),async (req,res) => {
       username: result.data.email
   }
   let access_token = jwt.sign(data, TOKEN_SECRET, {expiresIn: '1800s'})
+
   res.send({access_token, username: data.username})
         
 })
