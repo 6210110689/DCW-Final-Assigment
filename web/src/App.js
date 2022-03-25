@@ -22,7 +22,7 @@ function App() {
   return (
     <div >
       <FacebookLogin
-        appId="1079944439522127"
+        appId="649218682992262"
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}/>
