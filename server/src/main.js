@@ -2,8 +2,9 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
 const app = express()
 const port = 8080
 
@@ -21,12 +22,12 @@ const authenticated = (req, res, next) => {
   })
 }
 
-mongoose.connect('mongodb://localhost:login/',
-  ()=> console.log('completed connect to DB')
-)
-let User = mongoose.model('User', { fields: String });
-let adduser = new User({fields: 'test'});
-//adduser.save().then(()=>console.log('add'));
+dotenv.config();
+
+mongoose.connect('mongodb+srv://vittawong:vittawong@cluster0.h11wp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  });
 
 app.use(cors())
 
