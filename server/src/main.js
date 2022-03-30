@@ -24,10 +24,10 @@ const authenticated = (req, res, next) => {
 
 dotenv.config();
 
-mongoose.connect('mongodb+srv://vittawong:vittawong@cluster0.h11wp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  });
+  }).then(console.log('conect DB'));
 
 app.use(cors())
 
