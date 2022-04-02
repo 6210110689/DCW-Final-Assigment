@@ -1,6 +1,14 @@
 import FacebookLogin from 'react-facebook-login';
 import axios from 'axios';
 
+axios.interceptors.request.use(function(config){
+  const token = sessionStorage.getItem('access_token')
+  config.headers['Authorization'] = `Bearer ${token}`
+  return config
+}, function(err){
+  return Promise.reject(err)
+})
+
 
 const responseFacebook = async (response) => {
   if(response.accessToken){
