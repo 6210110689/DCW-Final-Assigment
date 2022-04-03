@@ -31,7 +31,16 @@ const responseFacebook = async (response) => {
       token: response.accessToken
     })
     console.log(result.data)
-    dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
+  }
+  dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
   }
 }
 
@@ -45,5 +54,6 @@ const responseFacebook = async (response) => {
         
       
     </div>
+    
   );
 }
