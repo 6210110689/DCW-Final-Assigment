@@ -14,6 +14,7 @@ const TOKEN_SECRET ='315bf8822770b897b8ae124799b2e34e82036976703b8be051847186729
 app.use(cors())
 app.use(bodyParser.json())
 dotenv.config();
+app.use('/api',Post)
 
 mongoose.connect(process.env.MONGO_URL.toString(), {
   useNewUrlParser: true,
