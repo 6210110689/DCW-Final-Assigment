@@ -1,6 +1,6 @@
 const { createLogger, format, transports, level} = require('winston');
 const path = require('path');
-const filename = path.join('log','loghistory');
+const filename = path.join('datalog','log');
 const book = createLogger({
     format: format.combine(
         format.timestamp({
